@@ -21,7 +21,11 @@ export default function Player({ round, score, setScore, players, data }) {
       </div>
 
       <Form className="form" onSubmit={handleScore}>
-        <FormControl ref={input1} disabled={round <= 0 ? true : false} />
+        <FormControl
+          type="number"
+          ref={input1}
+          disabled={round <= 0 ? true : false}
+        />
         <Button onClick={handleScore} disabled={round <= 0 ? true : false}>
           +
         </Button>
