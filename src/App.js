@@ -72,7 +72,7 @@ function App() {
               onClick={handleRound}
               size="lg"
               block
-              disabled={counter != players.length ? true : false}
+              disabled={counter !== players.length ? true : false}
             >
               Next Round
             </Button>
