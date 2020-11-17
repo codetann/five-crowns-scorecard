@@ -9,6 +9,8 @@ import "./style/style.css";
 function App() {
   const [score, setScore] = useState([]);
   const [round, setRound] = useState(0);
+  const [counter, setCounter] = useState(0);
+  const [start, setStart] = useState(false);
   const players = score.slice();
 
   const handleRound = () => {
@@ -17,6 +19,8 @@ function App() {
       return;
     } else {
       setRound(round + 1);
+      setStart(true);
+      setCounter(0);
     }
   };
 
@@ -24,6 +28,8 @@ function App() {
     <div className="App">
       {round > 11 && (
         <End
+          setCounter={setCounter}
+          setStart={setStart}
           players={players}
           score={score}
           setScore={setScore}
@@ -31,6 +37,7 @@ function App() {
         />
       )}
       <NavBar
+        setStart={setStart}
         round={round}
         score={score}
         setScore={setScore}
@@ -40,6 +47,8 @@ function App() {
         {players.map((item) => (
           <Player
             key={uuidv4()}
+            counter={counter}
+            setCounter={setCounter}
             round={round}
             data={item}
             score={score}
@@ -48,14 +57,26 @@ function App() {
           />
         ))}
         <div className="next-btn">
-          <Button
-            onClick={handleRound}
-            size="lg"
-            block
-            disabled={players.length < 2 ? true : false}
-          >
-            {round <= 0 ? "Start Game" : "Next Round"}
-          </Button>
+          {round <= 0 && (
+            <Button
+              onClick={handleRound}
+              size="lg"
+              block
+              disabled={players.length < 2 ? true : false}
+            >
+              Start Game
+            </Button>
+          )}
+          {start && (
+            <Button
+              onClick={handleRound}
+              size="lg"
+              block
+              disabled={counter != players.length ? true : false}
+            >
+              Next Round
+            </Button>
+          )}
         </div>
       </div>
     </div>

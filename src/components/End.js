@@ -1,7 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-export default function End({ score, setScore, players, setRound }) {
+export default function End({
+  setCounter,
+  setStart,
+  setScore,
+  players,
+  setRound,
+}) {
   const winner = () => {
     const temp = players.map((item) => item.score);
     const w = Math.min(...temp);
@@ -12,6 +18,8 @@ export default function End({ score, setScore, players, setRound }) {
   const resetGame = () => {
     setScore([]);
     setRound(0);
+    setCounter(0);
+    setStart(false);
   };
 
   return (
