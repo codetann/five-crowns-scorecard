@@ -78,7 +78,7 @@ function App() {
                   : true
               }
             >
-              Next Round
+              {round === 11 ? "Finish" : "Next Round"}
             </Button>
           )}
         </div>
