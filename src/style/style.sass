@@ -29,3 +29,25 @@
 
 @import ./_player
 @import ./_end
+
+@media only screen and ( min-width: 1000px )
+    .players-container
+        display: flex
+        justify-content: space-evenly
+        flex-wrap: wrap
+        padding-left: 20%
+        padding-right: 20%
+        height: 100vh
+
+    .player
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        width: 300px
+        height: 150px
+
+        .info
+            width: 90%
+            display: flex
+            justify-content: space-between
